@@ -881,3 +881,108 @@ footer {
   html {
     scroll-behavior: smooth;
   }
+  .cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .modern-btn {
+    padding: 14px 28px;
+    background: linear-gradient(135deg, #6c63ff, #4e46d0);
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(108, 99, 255, 0.4);
+  }
+  
+  .modern-btn:hover {
+    background: linear-gradient(135deg, #4e46d0, #3b32b0);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(108, 99, 255, 0.6);
+  }
+  
+  .modern-btn.secondary {
+    background: linear-gradient(135deg, #00c9ff, #92fe9d);
+    box-shadow: 0 6px 20px rgba(0, 201, 255, 0.4);
+  }
+  
+  .modern-btn.secondary:hover {
+    background: linear-gradient(135deg, #00b4db, #8fd3f4);
+    box-shadow: 0 8px 24px rgba(0, 201, 255, 0.6);
+  }
+  .navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+  
+  .logo-area {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .nav-logo {
+    height: 40px;
+    width: 40px;
+  }
+  
+  .logo-text {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #6c63ff;
+    font-family: 'Ubuntu', sans-serif;
+  }
+  
+  .navbar-links {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+  }
+  
+  .nav-link {
+    text-decoration: none;
+    font-weight: 500;
+    color: #3b3b3b;
+    position: relative;
+    padding: 6px 10px;
+    transition: all 0.3s ease;
+  }
+  
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    left: 0;
+    bottom: 0;
+    background-color: #6c63ff;
+    transition: width 0.3s ease;
+  }
+  
+  .nav-link:hover::after {
+    width: 100%;
+  }
+  
+  .btn-nav {
+    background-color: #6c63ff;
+    color: white !important;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: bold;
+  }
+  
+  .btn-nav:hover {
+    background-color: #5147d1;
+  }
+    
