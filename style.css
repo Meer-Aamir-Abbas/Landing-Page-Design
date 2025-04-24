@@ -10,15 +10,16 @@
     font-family: 'ubuntu', sans-serif;
 }
 .container {
-    display: grid;
     grid-template-areas:
-        "header"
-        "main"
-        "footer";
-    grid-template-rows: auto 1fr auto;
-    min-height: 100vh;
-}
-
+      "header"
+      "main"
+      "footer";
+    /* let each area size to its own height */
+    grid-template-rows: auto auto auto;
+    /* don’t force the container to 100vh */
+    min-height: auto;
+  }
+  
 header {
     grid-area: header;
 }
@@ -189,10 +190,8 @@ footer {
 
 .section1 {
     position: relative;
-    width: 100%;
-    /* Full width */
-    height: 60vh;
-    /* Adjust height based on viewport height */
+    width: 100%; /* Full width */
+    height: 60vh; /* Adjust height based on viewport height */
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -209,8 +208,7 @@ footer {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    /* Semi-transparent overlay */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
     z-index: 1;
 }
 
@@ -218,8 +216,7 @@ footer {
     position: relative;
     z-index: 2;
     color: white;
-    max-width: 50%;
-    /* Adjust width as needed */
+    max-width: 50%; /* Adjust width as needed */
     text-align: center;
 }
 
@@ -287,34 +284,72 @@ footer {
         max-width: 40%; /* Adjust width for larger desktops */
     }
 }
-
+@media (max-width: 767px) {
+    /* 1) Hero section */
+    @media (max-width: 767px) {
+        .section1 {
+          height: 100vh !important;            /* full viewport height */
+          min-height: 100vh !important;
+          padding: 0 !important;                /* remove extra top/bottom padding */
+          background-size: cover !important;    /* ensure it still covers */
+          background-position: center center !important;
+          overflow: hidden !important;          /* prevent any scrollbars */
+        }
+      }
+      
+    }
+    .topleft {
+      max-width: 100% !important;
+      padding: 0 10px !important;
+    }
+  
+    /* 2) Pricing plans */
+    .section3 .boxes {
+      flex-direction: column !important;
+      padding: 0 10px !important;
+    }
+    .section3 .box {
+      width: 100% !important;
+      margin: 0 0 20px !important;
+      box-sizing: border-box !important;
+    }
+  
+    /* 3) Compare-plans table scroll wrapper */
+    .section4 {
+      overflow-x: auto !important;
+      -webkit-overflow-scrolling: touch !important;
+      padding: 0 10px !important;
+    }
+    .section4 table {
+      width: 100% !important;
+      min-width: 400px !important;     /* keep columns readable */
+      table-layout: auto !important;
+    }
+    .section4 th,
+    .section4 td {
+      white-space: nowrap !important;
+      padding: 10px !important;
+    }
+  }  
 .section3 {
-    padding: 20px;
-    /* Adjust padding for all screens */
+    padding: 20px; /* Adjust padding for all screens */
     text-align: center;
 }
 
 .section3 .boxes {
     display: flex;
-    flex-wrap: wrap;
-    /* Allow boxes to wrap on smaller screens */
+    flex-wrap: wrap; /* Allow boxes to wrap on smaller screens */
     justify-content: center;
-    gap: 20px;
-    /* Add space between boxes */
+    gap: 20px;  /* Add space between boxes */
 }
 
 .section3 .box {
-    min-width: 250px;
-    /* Minimum width for boxes */
-    max-width: 300px;
-    /* Maximum width for boxes */
-    margin: 10px;
-    /* Add margin for spacing */
+    min-width: 250px; /* Minimum width for boxes */
+    margin: 10px; /* Add margin for spacing */
 }
 
 .section4 {
-    padding: 20px;
-    /* Adjust padding for all screens */
+    padding: 20px; /* Adjust padding for all screens */
     text-align: center;
 }
 
@@ -326,33 +361,47 @@ footer {
 
 .section4 table th,
 .section4 table td {
-    padding: 10px;
-    /* Adjust padding for table cells */
+    padding: 10px; /* Adjust padding for table cells */
     border-bottom: 2px solid black;
 }
 
+   @media (max-width: 767px) {
+    .section4 {
+      overflow-x: auto !important;
+      -webkit-overflow-scrolling: touch !important;
+      padding: 0 10px !important;       /* breathe room on both sides */
+    }
+  
+    .section4 table {
+      display: inline-block !important;
+      width: max-content !important;     /* size to content */
+      margin-left: 10px !important;      /* nudge table in so col-1 is visible */
+      table-layout: auto !important;
+    }
+  
+    .section4 th:first-child,
+    .section4 td:first-child {
+      padding-left: 0 !important;        /* avoid double-padding on first cell */
+    }
+  }
+  
 /* Media Queries for Responsiveness */
 @media (max-width: 767px) {
     .section3 .boxes {
-        flex-direction: column;
-        /* Stack boxes vertically on mobile */
+        align-items: row !important;
     }
-
     .section3 .box {
-        width: 100%;
-        /* Full width for mobile */
+        width: 100%;  /* Full width for mobile */
     }
 
     .section4 table {
-        font-size: 0.9rem;
-        /* Reduce font size for smaller screens */
+        font-size: 0.9rem; /* Reduce font size for smaller screens */
     }
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
     .section3 .box {
-        width: 45%;
-        /* Adjust width for tablet */
+        width: 45%; /* Adjust width for tablet */
     }
 }
 
@@ -370,8 +419,43 @@ footer {
         display: block;
     }
 }
-
-/* Existing CSS rules */
+  /* 2. Make container truly fluid (drops the 100vw cause of scrollbar overflow) */
+  .container {
+    max-width: 100%;
+    width: 100%;
+  }
+  
+  /* 3. Ensure images and tables can’t exceed their parent width */
+  img, 
+  .section4 table {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* 4. Force pricing boxes to stack at mobile widths */
+  @media (max-width: 767px) {
+    .section3 .box {
+      width: 100% !important;
+      max-width: none;
+    }
+  }
+  
+  /* 5. Wrap long content (like your gallery) */
+  .image-gallery,
+  .section4 table {
+    flex-wrap: wrap;
+    /* table is already scrollable from earlier; this just ensures no overflow */
+  }
+  
+  /* 6. Double-check any fixed widths:
+     Remove any remaining `width: 150px;` or similar on critical elements
+     or override them on mobile: */
+  @media (max-width: 767px) {
+    .photo-item {
+      width: 45%;           /* two items per row max */
+    }
+  }
+  
 .section4 table td {
     border-bottom: 2px solid black;
     text-align: center;
@@ -443,14 +527,14 @@ footer {
 }
 
 .image-container {
-    position: relative; /* Ensures the child (image) moves within this container */
+    position: relative; /* Ensures the moves within this container */
     height: 500px; /* Adjust based on your content */
 }
 
 .Aamirsfitness {
     position: absolute; /* Allows free movement within the parent */
-    top: 50px;  /* Moves image down (increase for more, decrease for less) */
-    left: 200px; /* Moves image to the right */
+    top: 10px;  /* Moves image down (increase for more, decrease for less) */
+    left: 14px; /* Moves image to the right */
     width: 50px; /* Adjust size as needed */
     height: auto;
 }
@@ -509,7 +593,7 @@ footer {
 .photo-gallery {
     display: inline-block; /* Display items in a row */
     animation: scrollGallery 20s linear infinite; /* Animation for scrolling */
-    animation-delay: 5s; /* Delay the animation by 2 second*/
+    animation-delay: 2s; /* Delay the animation by 2 second*/
 }
 
 .photo-item {
@@ -556,5 +640,34 @@ footer {
 
     .photo-gallery {
         flex-direction: column; /* Stack photos vertically on mobile */
+    }
+}
+.image-gallery-container {
+    width: 100%;
+    overflow: hidden; /* Hides overflow */
+    position: relative;
+}
+
+.image-gallery {
+    display: flex;
+    gap: 20px; /* Space between images */
+    animation: scrollGallery 20s linear infinite;
+    animation-delay: 3s; /* Add 5 sec delay before the start */
+}
+
+.photo-item {
+    flex: 0 0 auto;
+    width: 150px;
+    height: auto;
+    text-align: center;
+}
+
+/* Keyframes for scrolling effect */
+@keyframes scrollGallery {
+    0% {
+        transform: translateX(-100%, -100%);
+    }
+    100% {
+        transform: translateX(-100%);
     }
 }
