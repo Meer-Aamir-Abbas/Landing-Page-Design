@@ -22,7 +22,6 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="utils.css">
     <script src="timer.js"></script>
-    <script src="Data/content.js"></script>
 </head>
 
 <body>
@@ -152,31 +151,6 @@
                 </div>
         </section>
         <hr>
-        <section class="section-inquiry">
-            <h1 class="text-center my-2">Gym Contact Form</h1>
-            <form class="inquiry-form" action="#" method="POST">
-              <label>Name:</label>
-              <div class="form-row">
-                <input type="text" name="firstName" placeholder="First" required>
-                <input type="text" name="lastName" placeholder="Last" required>
-              </div>
-          
-              <label>Phone number:</label>
-              <input type="tel" name="phone" placeholder="(240) 123 4567 " required>
-          
-              <label>Email address:</label>
-              <input type="email" name="email" required>
-          
-              <label>What can we do for you?</label>
-              <textarea name="message" rows="4" required></textarea>
-          
-              <label>Verification<span style="color:red;">*</span></label>
-              <div class="g-recaptcha" data-sitekey="6LeYuCIrAAAAANxEJcSrhspT2-BGbfyPBpN8IAsD"></div>
-          
-              <button type="submit" class="btn">Submit Inquiry</button>
-            </form>
-          </section>
-        <hr>
         <section class="section4">
             <h1 class="text-center my-2"> Compare Plans </h1>
             <div class="container Plantable">
@@ -251,53 +225,6 @@
     <footer>
         Copyright &copy; Aamirsfitness.com | All Rights Reserved
     </footer>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            // Populate Photo Gallery
-            const galleryContainer = document.querySelector(".image-gallery");
-            galleryContainer.innerHTML = "";
-            contentData.gallery.forEach(item => {
-                const photoItem = `
-                    <div class="photo-item">
-                        <img src="${item.src}" alt="${item.description}" style="width: 150px; height: 150px; object-fit: cover;">
-                        <p class="image-description">${item.description}</p>
-                    </div>`;
-                galleryContainer.innerHTML += photoItem;
-            });
-        
-            // Populate Pricing Plans
-            const pricingContainer = document.querySelector(".boxes");
-            pricingContainer.innerHTML = "";
-            contentData.pricingPlans.forEach(plan => {
-                const planHTML = `
-                    <div class="box">
-                        <h2>${plan.name}</h2>
-                        <ul>
-                            <li class="highlighted">${plan.price}</li>
-                            ${plan.features.map(feature => `<li>${feature}</li>`).join('')}
-                            <li><button class="btn">Sign up Now</button></li>
-                        </ul>
-                    </div>`;
-                pricingContainer.innerHTML += planHTML;
-            });
-        
-            // Populate Plan Comparison Table
-            const tableBody = document.querySelector(".Plantable .table tbody");
-            tableBody.innerHTML = "";
-            contentData.planComparison.forEach(row => {
-                const rowHTML = `
-                    <tr>
-                        <th scope="row" class="text-start">${row.feature}</th>
-                        <td>${row.basic}</td>
-                        <td>${row.performance}</td>
-                        <td>${row.elite}</td>
-                    </tr>`;
-                tableBody.innerHTML += rowHTML;
-            });
-        });
-        </script>
-        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </body>
 
 </html>
