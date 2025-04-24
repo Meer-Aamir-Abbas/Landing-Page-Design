@@ -152,6 +152,31 @@
                 </div>
         </section>
         <hr>
+        <section class="section-inquiry">
+            <h1 class="text-center my-2">Gym Contact Form</h1>
+            <form class="inquiry-form" action="#" method="POST">
+              <label>Name:</label>
+              <div class="form-row">
+                <input type="text" name="firstName" placeholder="First" required>
+                <input type="text" name="lastName" placeholder="Last" required>
+              </div>
+          
+              <label>Phone number:</label>
+              <input type="tel" name="phone" placeholder="### ### ####" required>
+          
+              <label>Email address:</label>
+              <input type="email" name="email" required>
+          
+              <label>What can we do for you?</label>
+              <textarea name="message" rows="4" required></textarea>
+          
+              <label>Verification<span style="color:red;">*</span></label>
+              <div class="g-recaptcha" data-sitekey="6LeYuCIrAAAAANxEJcSrhspT2-BGbfyPBpN8IAsD"></div>
+          
+              <button type="submit" class="btn">Submit Inquiry</button>
+            </form>
+          </section>
+        <hr>
         <section class="section4">
             <h1 class="text-center my-2"> Compare Plans </h1>
             <div class="container Plantable">
@@ -272,7 +297,7 @@
             });
         });
         </script>
-        
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </body>
 
 </html>

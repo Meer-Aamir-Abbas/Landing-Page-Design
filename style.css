@@ -330,7 +330,7 @@ footer {
       white-space: nowrap !important;
       padding: 10px !important;
     }
-  }  
+  
 .section3 {
     padding: 20px; /* Adjust padding for all screens */
     text-align: center;
@@ -564,7 +564,10 @@ footer {
     gap: 20px; /* Add space between photos */
     justify-content: center; /* Center-align the gallery */
 }
-
+.photo-gallery:hover {
+    animation-play-state: paused !important;
+  }
+  
 .photo-item {
     text-align: center; /* Center-align the photo and description */
     width: 150px; /* Set a fixed width for each photo item */
@@ -588,12 +591,6 @@ footer {
     width: 100%; /* Full width of the container */
     overflow: hidden; /* Hide overflow */
     white-space: nowrap; /* Prevent wrapping of items */
-}
-
-.photo-gallery {
-    display: inline-block; /* Display items in a row */
-    animation: scrollGallery 20s linear infinite; /* Animation for scrolling */
-    animation-delay: 2s; /* Delay the animation by 2 second*/
 }
 
 .photo-item {
@@ -671,3 +668,72 @@ footer {
         transform: translateX(-100%);
     }
 }
+/* Smooth transition + jump on hover */
+.photo-item img {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .photo-item img:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+  }
+  
+  /* Pause the scrolling animation when hovering over any image */
+  .photo-gallery:hover {
+    animation-play-state: paused;
+  }
+  .section-inquiry {
+    padding: 40px 20px;
+    background-color: #ffffff;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+  }
+
+  .inquiry-form {
+    max-width: 600px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .form-row {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .form-row input {
+    flex: 1;
+  }
+  
+  .inquiry-form input,
+  .inquiry-form textarea {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #f4f2ff;
+  }
+  
+  .inquiry-form label {
+    font-weight: 500;
+    color: #3b3bb1;
+  }
+  
+  .inquiry-form .btn {
+    width: fit-content;
+    padding: 10px 20px;
+    font-size: 1rem;
+    align-self: flex-start;
+    background: #6c63ff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  .inquiry-form .btn:hover {
+    background: #5147d1;
+  }
+  
